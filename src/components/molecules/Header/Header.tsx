@@ -16,7 +16,6 @@ import { useCollectionsNavDiscovery } from '@/hooks/useCollectionsNavDiscovery/u
 import { useMessagesUnread } from '@/hooks/useMessagesUnread/useMessagesUnread';
 import { useRequireAuth } from '@/hooks/useRequireAuth/useRequireAuth';
 import { Github2, Telegram, XTwitter } from '@/icons';
-import { getDeployEnv } from '@/libs/runtime-config/runtime-config';
 import { handleFeedNavClick } from '@/libs/utils/feedScrollTop';
 import { cn } from '@/libs/utils/utils';
 import { AvatarWithFallback } from '@/organisms/AvatarWithFallback/AvatarWithFallback';
@@ -39,11 +38,6 @@ export const HeaderContainer = ({ children, className, classNameNav }: HeaderCon
         className,
       )}
     >
-      {getDeployEnv() === 'staging' && (
-        <div className="container mx-auto w-full max-w-(--container-max-width) px-6 text-right text-xs text-muted-foreground xl:px-0">
-          STAGING
-        </div>
-      )}
       <Container
         as="nav"
         size="container"

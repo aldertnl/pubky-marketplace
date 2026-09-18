@@ -3,8 +3,8 @@ import { Activity, SlidersHorizontal } from 'lucide-react';
 import type React from 'react';
 import { Button } from '@/atoms/Button/Button';
 import { Container } from '@/atoms/Container/Container';
-import { usePublicRoute } from '@/hooks/usePublicRoute/usePublicRoute';
 import { getDeployEnv } from '@/libs/runtime-config/runtime-config';
+import { usePublicRoute } from '@/hooks/usePublicRoute/usePublicRoute';
 import { cn } from '@/libs/utils/utils';
 import { useAuthStore } from '@/stores/auth/auth.store';
 import { Logo } from '../Logo/Logo';
@@ -49,11 +49,6 @@ export function MobileHeader({
           : 'bg-background shadow-xs',
       )}
     >
-      {getDeployEnv() === 'staging' && (
-        <div className="container mx-auto w-full max-w-(--container-max-width) px-6 text-right text-xs text-muted-foreground xl:px-0">
-          STAGING
-        </div>
-      )}
       <Container
         overrideDefaults
         className={cn('relative flex min-h-12 w-full items-center justify-between p-6', containerClassName)}
@@ -66,7 +61,12 @@ export function MobileHeader({
           ) : null}
         </SideSlot>
 
-        <Logo />
+        <div className="relative">
+          <Logo />
+          {getDeployEnv() === 'staging' && (
+            <span className="absolute top-full left-7 mt-0 text-xs tracking-wide text-muted-foreground">STAGING</span>
+          )}
+        </div>
 
         {/* Right icon - always Activity; action depends on auth */}
         {showRightButton ? (

@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 import type { MouseEvent } from 'react';
 import { usePublicRoute } from '@/hooks/usePublicRoute/usePublicRoute';
+import { getDeployEnv } from '@/libs/runtime-config/runtime-config';
 import { cn } from '@/libs/utils/utils';
 import {
   HeaderContainer,
@@ -68,7 +69,12 @@ export function Header() {
   if (isCopyrightPage) {
     return (
       <HeaderContainer classNameNav={classNameNav}>
-        <Logo />
+        <div className="relative">
+          <Logo />
+          {getDeployEnv() === 'staging' && (
+            <span className="absolute top-full left-7 mt-0 text-xs tracking-wide text-muted-foreground">STAGING</span>
+          )}
+        </div>
       </HeaderContainer>
     );
   }
@@ -85,7 +91,12 @@ export function Header() {
       classNameNav={classNameNav}
       className={cn(isLandingPage && 'p-0 sm:py-6', shouldHideHeaderOnMobile && 'hidden lg:block')}
     >
-      <Logo noLink={currentStep === 5} onClick={handleLandingLogoClick} />
+      <div className="relative">
+        <Logo noLink={currentStep === 5} onClick={handleLandingLogoClick} />
+        {getDeployEnv() === 'staging' && (
+          <span className="absolute top-full left-7 mt-0 text-xs tracking-wide text-muted-foreground">STAGING</span>
+        )}
+      </div>
       {shouldShowTitle && <HeaderTitle currentTitle={currentTitle} />}
       {renderHeaderContent()}
     </HeaderContainer>
