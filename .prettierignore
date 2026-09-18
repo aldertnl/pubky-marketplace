@@ -1,0 +1,61 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build outputs
+.next/
+out/
+dist/
+build/
+
+# Coverage
+coverage/
+
+# Cache
+.eslintcache
+.turbo
+
+# macOS AppleDouble resource forks
+._*
+**/._*
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+.cursor/
+.claude/
+
+# AI generated files
+.ai-reviews/
+
+# Test snapshots (to avoid reformatting)
+**/__snapshots__/
+
+# Config files that should maintain their format
+.husky/
+
+# Public assets
+public/
+
+# Generated files
+next-env.d.ts
+
+# Vendored verbatim from pubky-marketplace-service (emit-contracts output);
+# kept byte-identical so re-vendoring is a plain copy
+src/libs/commerce/contracts/state-machines.json
+
+# Vendored verbatim wasm-pack output of the Pubky Locks browser SDK;
+# kept byte-identical to the recorded build (see docs/ecommerce/locks-sdk-provenance.md)
+vendor/locks-sdk-wasm/
+
+# Vendored verbatim wasm-pack output of the paykit-wasm messaging binding;
+# kept byte-identical to the recorded build (see docs/ecommerce/paykit-wasm-provenance.md)
+vendor/paykit-wasm/
+
+tsconfig.json
